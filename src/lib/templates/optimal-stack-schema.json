@@ -1,0 +1,271 @@
+{
+  "industry": "Professional Services",
+  "company_size_band": "11–50 employees",
+  "team_type": "Hybrid",
+  "generated_at": "2024-11-30T00:00:00Z",
+  "categories": {
+    "crm": {
+      "category_name": "CRM",
+      "is_optional": false,
+      "primary": {
+        "name": "HubSpot",
+        "slug": "hubspot",
+        "category": "crm",
+        "website": "https://www.hubspot.com",
+        "pricing_tier": "mid",
+        "pricing_hint": "Starter ~$20-$50/user/mo",
+        "description": "All-in-one CRM and marketing platform with robust contact management, email tracking, and pipeline automation.",
+        "why": "Strong fit for professional services firms that need simple automation without heavy admin overhead. Scales well from 10-100 employees.",
+        "is_primary": true
+      },
+      "alternatives": [
+        {
+          "name": "Pipedrive",
+          "slug": "pipedrive",
+          "category": "crm",
+          "website": "https://www.pipedrive.com",
+          "pricing_tier": "low",
+          "pricing_hint": "Essential ~$14/user/mo",
+          "description": "Sales-focused CRM with visual pipeline management.",
+          "why": "Simpler interface, lower cost, great for teams focused purely on sales tracking without marketing automation.",
+          "is_primary": false
+        },
+        {
+          "name": "Salesforce",
+          "slug": "salesforce",
+          "category": "crm",
+          "website": "https://www.salesforce.com",
+          "pricing_tier": "enterprise",
+          "pricing_hint": "Professional ~$75+/user/mo",
+          "description": "Enterprise-grade CRM platform with extensive customization.",
+          "why": "Best for larger professional services firms (200+) with complex sales processes and need for deep customization.",
+          "is_primary": false
+        }
+      ]
+    },
+    "project_management": {
+      "category_name": "Project Management",
+      "is_optional": false,
+      "primary": {
+        "name": "Asana",
+        "slug": "asana",
+        "category": "project_management",
+        "website": "https://www.asana.com",
+        "pricing_tier": "mid",
+        "pricing_hint": "Starter ~$10-13/user/mo",
+        "description": "Flexible project and task management platform with multiple views (list, board, timeline).",
+        "why": "Ideal for professional services teams managing client projects with clear deliverables and milestones.",
+        "is_primary": true
+      },
+      "alternatives": [
+        {
+          "name": "ClickUp",
+          "slug": "clickup",
+          "category": "project_management",
+          "website": "https://www.clickup.com",
+          "pricing_tier": "low",
+          "pricing_hint": "Unlimited ~$7/user/mo",
+          "description": "All-in-one project management with docs, goals, and time tracking built-in.",
+          "why": "More features per dollar, great for teams wanting to consolidate multiple tools into one platform.",
+          "is_primary": false
+        }
+      ]
+    },
+    "accounting": {
+      "category_name": "Accounting",
+      "is_optional": false,
+      "primary": {
+        "name": "QuickBooks Online",
+        "slug": "quickbooks",
+        "category": "accounting",
+        "website": "https://quickbooks.intuit.com",
+        "pricing_tier": "mid",
+        "pricing_hint": "Simple Start ~$30/mo + $25/mo per user",
+        "description": "Industry-standard accounting software with invoicing, expense tracking, and reporting.",
+        "why": "Most widely used by professional services, integrates with virtually every business tool, accountant-friendly.",
+        "is_primary": true
+      },
+      "alternatives": [
+        {
+          "name": "Xero",
+          "slug": "xero",
+          "category": "accounting",
+          "website": "https://www.xero.com",
+          "pricing_tier": "mid",
+          "pricing_hint": "Growing ~$37/mo",
+          "description": "Cloud accounting platform with strong bank reconciliation and multi-currency support.",
+          "why": "Better international support, cleaner UI, growing ecosystem of integrations.",
+          "is_primary": false
+        }
+      ]
+    },
+    "file_storage": {
+      "category_name": "File Storage",
+      "is_optional": false,
+      "primary": {
+        "name": "Google Workspace",
+        "slug": "google-workspace",
+        "category": "file_storage",
+        "website": "https://workspace.google.com",
+        "pricing_tier": "low",
+        "pricing_hint": "Business Starter ~$6/user/mo",
+        "description": "Cloud storage, docs, email, and collaboration suite with real-time editing.",
+        "why": "Best all-around value for SMBs. Includes email, storage, docs, and video conferencing in one affordable package.",
+        "is_primary": true
+      },
+      "alternatives": [
+        {
+          "name": "Microsoft 365",
+          "slug": "microsoft-365",
+          "category": "file_storage",
+          "website": "https://www.microsoft.com/microsoft-365",
+          "pricing_tier": "mid",
+          "pricing_hint": "Business Basic ~$6/user/mo",
+          "description": "Office suite with OneDrive, Teams, Outlook, and desktop apps.",
+          "why": "Better for teams heavily using Excel, Outlook, or Windows desktop applications.",
+          "is_primary": false
+        }
+      ]
+    },
+    "communications": {
+      "category_name": "Communications",
+      "is_optional": false,
+      "primary": {
+        "name": "Slack",
+        "slug": "slack",
+        "category": "communications",
+        "website": "https://slack.com",
+        "pricing_tier": "mid",
+        "pricing_hint": "Pro ~$7.25/user/mo",
+        "description": "Team messaging platform with channels, threads, and extensive integrations.",
+        "why": "Industry standard for team communication, reduces email clutter, integrates with everything.",
+        "is_primary": true
+      },
+      "alternatives": [
+        {
+          "name": "Microsoft Teams",
+          "slug": "microsoft-teams",
+          "category": "communications",
+          "website": "https://www.microsoft.com/microsoft-teams",
+          "pricing_tier": "low",
+          "pricing_hint": "Included with Microsoft 365",
+          "description": "Chat, video, and collaboration platform integrated with Office 365.",
+          "why": "Free with Microsoft 365, great for teams already using Office apps.",
+          "is_primary": false
+        }
+      ]
+    },
+    "automation": {
+      "category_name": "Automation",
+      "is_optional": false,
+      "primary": {
+        "name": "Zapier",
+        "slug": "zapier",
+        "category": "automation",
+        "website": "https://zapier.com",
+        "pricing_tier": "mid",
+        "pricing_hint": "Professional ~$49/mo",
+        "description": "No-code automation platform connecting 5,000+ apps with simple workflows.",
+        "why": "Easiest automation tool for non-technical teams to eliminate repetitive tasks and connect disparate tools.",
+        "is_primary": true
+      },
+      "alternatives": [
+        {
+          "name": "Make",
+          "slug": "make",
+          "category": "automation",
+          "website": "https://www.make.com",
+          "pricing_tier": "low",
+          "pricing_hint": "Core ~$9/mo",
+          "description": "Visual automation platform (formerly Integromat) with advanced logic capabilities.",
+          "why": "More affordable than Zapier with more powerful workflows, but steeper learning curve.",
+          "is_primary": false
+        }
+      ]
+    },
+    "ai_tools": {
+      "category_name": "AI Tools",
+      "is_optional": false,
+      "primary": {
+        "name": "ChatGPT Team",
+        "slug": "chatgpt-team",
+        "category": "ai_tools",
+        "website": "https://openai.com/chatgpt",
+        "pricing_tier": "mid",
+        "pricing_hint": "Team ~$25/user/mo",
+        "description": "AI assistant for writing, research, analysis, and brainstorming with team workspace.",
+        "why": "Essential AI tool for modern knowledge work. Improves productivity across writing, research, and client deliverables.",
+        "is_primary": true
+      },
+      "alternatives": [
+        {
+          "name": "Claude Pro",
+          "slug": "claude-pro",
+          "category": "ai_tools",
+          "website": "https://claude.ai",
+          "pricing_tier": "mid",
+          "pricing_hint": "Pro ~$20/user/mo",
+          "description": "AI assistant with longer context windows and advanced reasoning.",
+          "why": "Better for document analysis and complex reasoning tasks. Strong alternative to ChatGPT.",
+          "is_primary": false
+        }
+      ]
+    },
+    "hr_payroll": {
+      "category_name": "HR / Payroll",
+      "is_optional": false,
+      "primary": {
+        "name": "Gusto",
+        "slug": "gusto",
+        "category": "hr_payroll",
+        "website": "https://gusto.com",
+        "pricing_tier": "mid",
+        "pricing_hint": "Simple ~$40/mo + $6/person",
+        "description": "Full-service payroll, benefits, and HR platform for small businesses.",
+        "why": "Best all-in-one solution for SMBs handling payroll, benefits, onboarding, and compliance.",
+        "is_primary": true
+      },
+      "alternatives": [
+        {
+          "name": "Rippling",
+          "slug": "rippling",
+          "category": "hr_payroll",
+          "website": "https://www.rippling.com",
+          "pricing_tier": "mid",
+          "pricing_hint": "$8/user/mo + modules",
+          "description": "HR, IT, and finance platform managing everything from payroll to device management.",
+          "why": "More comprehensive than Gusto, great for tech-forward companies wanting unified employee systems.",
+          "is_primary": false
+        }
+      ]
+    },
+    "security": {
+      "category_name": "Security",
+      "is_optional": false,
+      "primary": {
+        "name": "1Password Business",
+        "slug": "1password",
+        "category": "security",
+        "website": "https://1password.com",
+        "pricing_tier": "low",
+        "pricing_hint": "Business ~$7.99/user/mo",
+        "description": "Password manager with secure vaults, sharing, and two-factor authentication.",
+        "why": "Essential security baseline. Prevents password reuse and credential theft, easy for teams to adopt.",
+        "is_primary": true
+      },
+      "alternatives": [
+        {
+          "name": "Bitwarden",
+          "slug": "bitwarden",
+          "category": "security",
+          "website": "https://bitwarden.com",
+          "pricing_tier": "low",
+          "pricing_hint": "Teams ~$3/user/mo",
+          "description": "Open-source password manager with enterprise features at lower cost.",
+          "why": "Most affordable option with strong security. Great for cost-conscious teams.",
+          "is_primary": false
+        }
+      ]
+    }
+  }
+}
