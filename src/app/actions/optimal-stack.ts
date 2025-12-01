@@ -3,6 +3,7 @@
 import { createClient } from '@/lib/supabase/server'
 import OpenAI from 'openai'
 import type { OptimalStack, OptimalStackRecord } from '@/lib/types/optimal-stack'
+import { generateComparisonSummary } from './comparison'
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
@@ -174,6 +175,11 @@ export async function getOrGenerateOptimalStack(
         .single()
 
       if (existingStack) {
+        // Trigger comparison analysis if not already done
+        // This runs in background, doesn't block the return
+        generateComparisonSummary(stackId).catch((err) =>
+          console.error('Background comparison failed:', err)
+        )
         return { success: true, data: existingStack as OptimalStackRecord, fromCache: false }
       }
     }
@@ -190,6 +196,13 @@ export async function getOrGenerateOptimalStack(
         false // This is a user's copy, not the cached master
       )
 
+      // 🆕 Trigger comparison analysis automatically if we have a stack_id
+      if (stackId) {
+        generateComparisonSummary(stackId).catch((err) =>
+          console.error('Background comparison failed:', err)
+        )
+      }
+
       return { success: true, data: userStack, fromCache: true }
     }
 
@@ -198,6 +211,13 @@ export async function getOrGenerateOptimalStack(
 
     // Save as cached version (first one for this combination)
     const savedStack = await saveOptimalStack(optimalStack, user.id, stackId, true)
+
+    // 🆕 Trigger comparison analysis automatically if we have a stack_id
+    if (stackId) {
+      generateComparisonSummary(stackId).catch((err) =>
+        console.error('Background comparison failed:', err)
+      )
+    }
 
     return { success: true, data: savedStack, fromCache: false }
   } catch (error) {

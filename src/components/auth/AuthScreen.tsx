@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import { Mail, Lock, ArrowRight, DollarSign, TrendingDown, Zap } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -13,14 +14,17 @@ interface AuthScreenProps {
 }
 
 export function AuthScreen({ mode = 'login' }: AuthScreenProps) {
+  const router = useRouter()
   const [isLogin, setIsLogin] = useState(mode === 'login')
   const [acceptedTerms, setAcceptedTerms] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [successMessage, setSuccessMessage] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setError(null)
+    setSuccessMessage(null)
     setLoading(true)
 
     const formData = new FormData(e.currentTarget)
@@ -28,12 +32,32 @@ export function AuthScreen({ mode = 'login' }: AuthScreenProps) {
     try {
       const result = isLogin ? await signIn(formData) : await signUp(formData)
 
-      if (result?.error) {
+      if (result.success) {
+        // Check if email confirmation is required (signup only)
+        if ('requiresEmailConfirmation' in result && result.requiresEmailConfirmation) {
+          setSuccessMessage(
+            'message' in result && typeof result.message === 'string'
+              ? result.message
+              : 'Please check your email to confirm your account.'
+          )
+          setLoading(false)
+        } else {
+          // Successful authentication - redirect to dashboard
+          router.push('/dashboard')
+          router.refresh()
+          // Keep loading true during redirect for better UX
+        }
+      } else if (result.error) {
         setError(result.error)
+        setLoading(false)
+      } else {
+        // Unexpected response format
+        setError('An unexpected error occurred')
+        setLoading(false)
       }
     } catch (err) {
+      console.error('Auth error:', err)
       setError('An unexpected error occurred')
-    } finally {
       setLoading(false)
     }
   }
@@ -194,6 +218,12 @@ export function AuthScreen({ mode = 'login' }: AuthScreenProps) {
             {error && (
               <div className="p-3 bg-red-50 border border-red-200 rounded-lg">
                 <p className="text-sm text-red-600">{error}</p>
+              </div>
+            )}
+
+            {successMessage && (
+              <div className="p-3 bg-green-50 border border-green-200 rounded-lg">
+                <p className="text-sm text-green-700">{successMessage}</p>
               </div>
             )}
 

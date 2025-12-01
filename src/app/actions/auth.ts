@@ -1,8 +1,8 @@
 'use server'
 
 import { createClient } from '@/lib/supabase/server'
-import { redirect } from 'next/navigation'
 import { headers } from 'next/headers'
+import { redirect } from 'next/navigation'
 
 export async function signUp(formData: FormData) {
   const email = formData.get('email') as string
@@ -10,7 +10,7 @@ export async function signUp(formData: FormData) {
 
   const supabase = await createClient()
 
-  const { error } = await supabase.auth.signUp({
+  const { data, error } = await supabase.auth.signUp({
     email,
     password,
     options: {
@@ -19,10 +19,19 @@ export async function signUp(formData: FormData) {
   })
 
   if (error) {
-    return { error: error.message }
+    return { success: false, error: error.message }
   }
 
-  redirect('/dashboard')
+  // Check if email confirmation is required
+  if (data.user && !data.session) {
+    return {
+      success: true,
+      requiresEmailConfirmation: true,
+      message: 'Please check your email to confirm your account before signing in.',
+    }
+  }
+
+  return { success: true, requiresEmailConfirmation: false }
 }
 
 export async function signIn(formData: FormData) {
@@ -37,10 +46,10 @@ export async function signIn(formData: FormData) {
   })
 
   if (error) {
-    return { error: error.message }
+    return { success: false, error: error.message }
   }
 
-  redirect('/dashboard')
+  return { success: true }
 }
 
 export async function signOut() {

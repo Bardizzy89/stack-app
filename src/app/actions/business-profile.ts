@@ -53,7 +53,7 @@ export async function createBusinessProfile(formData: FormData) {
   const validation = businessProfileSchema.safeParse(rawData)
 
   if (!validation.success) {
-    return { error: validation.error.errors[0].message }
+    return { error: validation.error.issues[0].message }
   }
 
   const validatedData = validation.data
@@ -105,7 +105,7 @@ export async function updateBusinessProfile(formData: FormData) {
   const validation = businessProfileSchema.safeParse(rawData)
 
   if (!validation.success) {
-    return { error: validation.error.errors[0].message }
+    return { error: validation.error.issues[0].message }
   }
 
   const validatedData = validation.data
